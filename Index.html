@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULADORA DE IMC</title>
+    
+    <style>
+        *{margin: 0;
+        padding: 0;}
+    
+    .fundo{ 
+        background: linear-gradient(45deg, blue, white);
+        height: 100vh;
+    }
+.calculadora{ 
+width: 300px;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 50%;
+    left: 50%;    
+    color: #fff;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 15px;
+    font-family: Arial, sans-serif;
+    text-align: center; 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+.calculadora input { 
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    display: block; 
+    margin-bottom: 20px;
+    width: 100%;    
+    box-sizing: border-box;
+}
+.calculadora button { 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;    } 
+    .calculadora button:hover { 
+    background-color: green;
+    color: white;           }
+    
+    #resultado {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    font-size: 1.3rem;
+    transition: all 0.5s ease; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+    </style>
+
+<head>  
+
+<body>
+    <div class="fundo">   
+        <div class="calculadora">
+            <h1>Calculadora</h1>
+            
+           <table>
+    <tr><td><input type="number" id="peso" placeholder="Peso (kg)"></td></tr>
+    <tr><td><input type="number" id="altura" placeholder="Altura (Mtrs)"></td></tr>
+    <tr><td><button onclick="calcular()">Calcular</button></td></tr>
+</table>
+<table>
+    <h2 id="resultado"></h2>
+        </table>
+
+         </div>
+    </div>
+</html>
+<script>
+    function calcular(){
+   
+    const peso = document.getElementById('peso').value;
+    const altura = document.getElementById('altura').value;
+    const display = document.getElementById('resultado');
+
+
+    if (peso !== '' && altura !== '') {
+const imc = (peso / (altura * altura)).toFixed(2);
+let classificacao = '';
+
+        if (imc < 18.5) {
+            classificacao = 'Abaixo do peso';
+            display.style.color = 'yellow';
+        } else if (imc < 25) {
+            classificacao = 'Peso ideal (parabéns!)';
+            display.style.color = 'white';
+
+        } else if (imc < 30) {
+            classificacao = 'Levemente acima do peso';
+            display.style.color = 'orange';
+
+            } else if (imc < 35) {
+            classificacao = 'Obesidade Grau I';
+            display.style.color = 'OrangeRed';
+
+        } else if (imc < 40) {
+            classificacao = 'Obesidade Grau II (severa)';
+            display.style.color = 'OrangeRed';
+
+        } else {
+            classificacao = 'Obesidade Grau III (mórbida)';
+            display.style.color = 'purple';
+        }
+
+        display.innerHTML = `Seu IMC é: ${imc} - Classificação: ${classificacao}`;
+    } else {
+ alert("Preencha os campos!"); }
+    }
+
+        </script>
+
+
+</body>
+
+</html>
